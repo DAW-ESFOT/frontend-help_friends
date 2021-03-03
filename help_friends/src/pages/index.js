@@ -1,17 +1,18 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import Navigation from '../components/Navigation'
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>help friend's</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <Navigation/>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Learn to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
         <p className={styles.description}>
@@ -39,7 +40,7 @@ export default function Home() {
           </a>
 
           <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
             className={styles.card}
           >
             <h3>Deploy &rarr;</h3>
