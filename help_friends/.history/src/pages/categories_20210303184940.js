@@ -1,26 +1,26 @@
 import Link from 'next/link'
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const Category = ({categories}) => {
-
     console.log('categorias', categories );
+    console.log('identificacion', categories[0].id);
     if(!categories){
         return 'No se pudo obtener una categoría'
     }
+
     return (
         <div>
-            <ul>
             {
                 categories.map((category)=>{
                     return (
-                        <li key={category.id}>
-                            <Link href='/categories/subCategories'>{category.name}</Link>
-                        </li>
+                        <ul>
+                            <li key={category.id}>
+                                <Link href='/categories/subCategories'>{category.name}</Link>
+                            </li>
+                        </ul>
                     )
                 })
             }
-            </ul>
-            
         </div>
     );
 };
@@ -30,7 +30,6 @@ export default Category;
 export async function getStaticProps() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/categories`)
     const data = await res.json();
-    console.log('data',data);
     if(!data){
         return{
             notFount:true,

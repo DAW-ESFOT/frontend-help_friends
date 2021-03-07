@@ -42,7 +42,7 @@ const Login = () => {
                             <Button color='primary' variant='contained'>Iniciar Sesion</Button>
                             <Button color='primary' variant='contained'><Link href='/'>Cancelar</Link></Button>
                         </div>
-                        <p style={{marginTop:30, marginBottom:30}}>No tienes cuenta registrate</p>
+                        <p style={{marginTop:30, marginBottom:30}}>No tienes cuenta? registrate</p>
 
                         <div style={{display:'flex', justifyContent:'center'}}>
                             <Button color='primary' variant='contained'>Registro</Button>     

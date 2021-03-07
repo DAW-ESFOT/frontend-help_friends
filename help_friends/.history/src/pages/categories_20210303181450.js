@@ -1,26 +1,24 @@
 import Link from 'next/link'
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const Category = ({categories}) => {
-
     console.log('categorias', categories );
     if(!categories){
         return 'No se pudo obtener una categoría'
     }
     return (
         <div>
-            <ul>
             {
                 categories.map((category)=>{
                     return (
-                        <li key={category.id}>
-                            <Link href='/categories/subCategories'>{category.name}</Link>
-                        </li>
+                        <ul>
+                            <li key={category.id+''}>
+                                <Link href='/categories/subCategories'>{category.name}</Link>
+                            </li>
+                        </ul>
                     )
                 })
             }
-            </ul>
-            
         </div>
     );
 };
