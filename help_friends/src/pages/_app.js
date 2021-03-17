@@ -34,7 +34,7 @@ function App({Component, pageProps}) {
                     <CssBaseline/>
                     <Navigation/>
                     <Container maxWidth="lg">
-                        <Grid container spacing={2}>
+                        <Grid container item spacing={2}>
                             <Grid item xs={12}>
                                 <Component {...pageProps} />
                             </Grid>

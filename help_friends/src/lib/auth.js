@@ -167,6 +167,7 @@ function useAuthProvider() {
         register,
         login,
         logout,
+
         // sendPasswordResetEmail,
         // confirmPasswordReset
     };

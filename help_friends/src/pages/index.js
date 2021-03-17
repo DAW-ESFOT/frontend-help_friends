@@ -49,10 +49,7 @@ export default function Home() {
 
             <footer>
                 <Grid container spacing={4}>
-                    <Grid item xs>
-                        <div class="">
-
-                        </div>
+                    <Grid item xs={12}>
                     </Grid>
                     <Grid item xs>
 

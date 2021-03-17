@@ -41,36 +41,40 @@ const Category = ({categories}) => {
     }
 
     return (
-        <Grid container direction='row' justify='space-evenly'>
-            {
-                categories.map((category) => (
-                        <Card className={classes.root} key={category.id}>
-                            <CardActionArea>
-                                <CardMedia
-                                    className={classes.media}
-                                    component="img"
-                                    src={`https://picsum.photos/300/350?sig=${category.id}`}
-                                    title={classes.title}
-                                />
-                                <CardContent>
-                                    <div style={{textAlign: 'center'}}>
-                                        <Typography
-                                            gutterBottom
-                                            variant="h5"
-                                            component="h2"
-                                            className={classes.title}
-                                        >
-                                            <Link href={`/categories/${category.id}`}>{category.name}</Link>
-                                        </Typography>
-                                    </div>
-                                </CardContent>
-                            </CardActionArea>
-                        </Card>
-                    )
-                )
-            }
-        </Grid>
+        <>
+            <h1>¿Que categoría estas buscando?</h1>
 
+            <Grid container direction='row' justify='space-evenly'>
+
+                {
+                    categories.map((category) => (
+                            <Card className={classes.root} key={category.id}>
+                                <CardActionArea>
+                                    <CardMedia
+                                        className={classes.media}
+                                        component="img"
+                                        src={`https://picsum.photos/300/350?sig=${category.id}`}
+                                        title={classes.title}
+                                    />
+                                    <CardContent>
+                                        <div style={{textAlign: 'center'}}>
+                                            <Typography
+                                                gutterBottom
+                                                variant="h5"
+                                                component="h2"
+                                                className={classes.title}
+                                            >
+                                                <Link href={`/categories/${category.id}`}>{category.name}</Link>
+                                            </Typography>
+                                        </div>
+                                    </CardContent>
+                                </CardActionArea>
+                            </Card>
+                        )
+                    )
+                }
+            </Grid>
+        </>
     )
 };
 
