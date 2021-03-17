@@ -15,6 +15,9 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import {useAuth} from "@/lib/auth";
+import Button from '@material-ui/core/Button';
+import categories from '../pages/categories';
+
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -185,7 +188,7 @@ export default function PrimarySearchAppBar() {
                         <MenuIcon/>
                     </IconButton>
                     <Typography className={classes.title} variant="h6" noWrap>
-                        Material-UI
+                        HELP FRIENDS
                     </Typography>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
