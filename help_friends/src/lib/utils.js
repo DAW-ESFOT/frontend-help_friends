@@ -4,7 +4,13 @@ export const fetcher = async (url) => {
     const response = await api.get(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}${url}`
     );
-    const data = await response.json();
-    console.log('data', data);
-    return data;
+    console.log('response', response)
+    return response.data;
 }
+// export const pusher = async (url) => {
+//     const response = await api.post(
+//         `${process.env.NEXT_PUBLIC_API_BASE_URL}${url}`
+//     );
+//     console.log('response', response)
+//     return response.data;
+// }

@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
         width: 1000,
         height: 700,
         backgroundColor: 'white',
-        border: '0px solid #000',
+        border: '0px #000',
         boxShadow: theme.shadows[5],
         padding: "16px 32px 24px",
         top: '50%',
@@ -84,9 +84,6 @@ const Articles = ({articles}) => {
             </div>
             <TextField label="Nombre" className={classes.textfields}/>
             <br/>
-            {/*{*/}
-            {/*    <Comments articleId={articleId}/>*/}
-            {/*}*/}
             <Button onClick={() => handleCloseModal()}>Cancelar</Button>
         </div>
     )
@@ -100,6 +97,7 @@ const Articles = ({articles}) => {
                     {body}
                 </Modal>
             }
+            <h1>Artículos</h1>
             <Grid container direction='row' justify='space-evenly'>
                 {
                     articles.map(article => (
@@ -135,30 +133,34 @@ const Articles = ({articles}) => {
 
                                 <CardActions className={classes.center}>
                                     {
-                                        user===null?(
-                                            <Button
-                                                size="small"
-                                                color="primary"
-                                                onClick={() => handleOpenModal()}
-                                                disabled
-                                            >
-                                                Obtener
-                                            </Button>,
-                                            <p>Usted debe iniciar sesion</p>
-                                        ):(
-                                            <Button
-                                                size="small"
-                                                color="primary"
-                                                onClick={() => handleOpenModal()}
-                                            >
-                                                Obtener
-                                            </Button>
+                                        user === false ? (
+                                            <>
+                                                <Button
+                                                    size="small"
+                                                    color="primary"
+                                                    disabled={true}
+                                                >
+                                                    Obtener
+                                                </Button>
+                                                <p>
+                                                    Inicie sesion
+                                                </p>
+                                            </>
+
+
+                                        ) : (
+                                            <Link href={`/articles/${article.id}`} passHref>
+                                                < Button
+                                                    size="small"
+                                                    color="primary"
+                                                >
+                                                    Obtener
+                                                </Button>
+                                            </Link>
+
                                         )
                                     }
-
                                 </CardActions>
-
-
                             </Card>
                         )
                     )
@@ -166,19 +168,6 @@ const Articles = ({articles}) => {
             </Grid>
         </>
     )
-    // return (
-    //     <>
-    //         <ul>
-    //             {
-    //                 articles.map(article=>{
-    //                     return (
-    //                         <li key={article.id}>{article.name}</li>
-    //                     )
-    //                 })
-    //             }
-    //         </ul>
-    //     </>
-    // )
 }
 export default Articles;
 

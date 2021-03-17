@@ -10,6 +10,12 @@ const Comments = ({articleId}) => {
     if (error) return <div>No se pudo cargar los comentarios </div>
     if (!data) return <div>Cargando comentarios... </div>
     //render data
-    return <div>{data.map(comment => <li key={comment.id}>{comment.text}</li>)}</div>
+    return (
+        <div>
+            {
+                data.map(comment => <li key={comment.id}>{comment.description}</li>)
+            }
+        </div>
+    )
 }
 export default withAuth(Comments)

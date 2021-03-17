@@ -126,19 +126,6 @@ export default function PrimarySearchAppBar() {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            {/*{*/}
-            {/*    user === null ? (*/}
-            {/*            'verificando'*/}
-            {/*        )*/}
-            {/*        : user === false ? (*/}
-            {/*            <Link href='/login'>*/}
-            {/*                <MenuItem>Iniciar Sesion</MenuItem>*/}
-            {/*            </Link>*/}
-            {/*        )*/}
-            {/*        : (*/}
-            {/*            <MenuItem onClick={handleLogout}>Salir</MenuItem>*/}
-            {/*        )*/}
-            {/*}*/}
         </Menu>
     );
 
@@ -185,7 +172,7 @@ export default function PrimarySearchAppBar() {
                 <Toolbar >
                     <Link href='/' passHref>
                             <Button>
-                                <h3 style={{color: 'white'}}>Help friend´s</h3>
+                                <h2 style={{color: 'white'}}>Help friend´s</h2>
                             </Button>
                     </Link>
                     <Link href='/categories' passHref>
@@ -198,50 +185,26 @@ export default function PrimarySearchAppBar() {
                             <h5 style={{color: 'white'}}>Publicar</h5>
                         </Button>
                     </Link>
-                    <div className={classes.search}>
-                        <div className={classes.searchIcon}>
-                            <SearchIcon/>
-                        </div>
-                        <InputBase
-                            placeholder="Search…"
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            inputProps={{'aria-label': 'search'}}
-                        />
-                    </div>
                     <div className={classes.grow}/>
                     <div>
                         {
                             user === false ? (
                                 <Link href='/login' passHref>
                                     <Button style={{color: 'white'}}>
-                                        <Typography className={classes.title} variant="h6">Iniciar Sesion</Typography>
+                                        <Typography className={classes.title} variant="h7">Iniciar Sesion</Typography>
                                     </Button>
                                 </Link>
 
                             ) : (
-                                <Link href='/login' passHref>
+                                <Link href='/' passHref>
                                     <Button style={{color: 'white'}} onClick={handleLogout}>
-                                        <Typography className={classes.title} variant="h6">Salir</Typography>
+                                        <Typography className={classes.title} variant="h7">Salir</Typography>
                                     </Button>
                                 </Link>
                             )
                         }
                     </div>
 
-                    <div className={classes.sectionMobile}>
-                        <IconButton
-                            aria-label="show more"
-                            aria-controls={mobileMenuId}
-                            aria-haspopup="true"
-                            onClick={handleMobileMenuOpen}
-                            color="inherit"
-                        >
-                            <MoreIcon/>
-                        </IconButton>
-                    </div>
                 </Toolbar>
             </AppBar>
             {renderMobileMenu}

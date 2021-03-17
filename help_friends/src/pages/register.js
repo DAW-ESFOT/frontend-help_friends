@@ -11,7 +11,7 @@ import {yupResolver} from "@hookform/resolvers/yup";
 
 const schema = yup.object().shape({
 
-    userName: yup.string().required('Necesita un nombre de usuario'),
+    image: yup.string().required('Necesita un nombre de usuario'),
     name: yup.string().required('Ingrese su nombre'),
     lastname: yup.string().required('Ingrese su Apellido'),
     phone: yup.string().required('Ingrese su Teléfono'),
@@ -95,8 +95,8 @@ const Register = () => {
                             <Grid container spacing={1} alignItems="center">
                                 <Grid xs={12} item>
                                     <TextField
-                                        id='userName'
-                                        name='userName'
+                                        id='image'
+                                        name='image'
                                         type='name'
                                         label='Nombre de usuario'
                                         ref={register}/>

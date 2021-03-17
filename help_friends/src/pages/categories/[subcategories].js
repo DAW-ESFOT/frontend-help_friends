@@ -39,35 +39,38 @@ const Articles = ({subcategory}) => {
         return 'No se pudo obtener una subcategoría'
     }
     return (
-        <Grid container direction='row' justify='space-evenly'>
-            {
-                subcategory.map((subcategory) => (
-                        <Card className={classes.root} key={subcategory.id}>
-                            <CardActionArea>
-                                <CardMedia
-                                    className={classes.media}
-                                    component="img"
-                                    src={`https://picsum.photos/300/350?sig=${subcategory.id}`}
-                                    title={classes.title}
-                                />
-                                <CardContent>
-                                    <div style={{textAlign: 'center'}}>
-                                        <Typography
-                                            gutterBottom
-                                            variant="h5"
-                                            component="h2"
-                                            className={classes.title}
-                                        >
-                                            <Link href={`/subcategories/${subcategory.id}`}>{subcategory.name}</Link>
-                                        </Typography>
-                                    </div>
-                                </CardContent>
-                            </CardActionArea>
-                        </Card>
+        <>
+            <h1>Puedes buscar en estas subcategorias</h1>
+            <Grid container direction='row' justify='space-evenly'>
+                {
+                    subcategory.map((subcategory) => (
+                            <Card className={classes.root} key={subcategory.id}>
+                                <CardActionArea>
+                                    <CardMedia
+                                        className={classes.media}
+                                        component="img"
+                                        src={`https://picsum.photos/300/350?sig=${subcategory.id}`}
+                                        title={classes.title}
+                                    />
+                                    <CardContent>
+                                        <div style={{textAlign: 'center'}}>
+                                            <Typography
+                                                gutterBottom
+                                                variant="h5"
+                                                component="h2"
+                                                className={classes.title}
+                                            >
+                                                <Link href={`/subcategories/${subcategory.id}`}>{subcategory.name}</Link>
+                                            </Typography>
+                                        </div>
+                                    </CardContent>
+                                </CardActionArea>
+                            </Card>
+                        )
                     )
-                )
-            }
-        </Grid>
+                }
+            </Grid>
+        </>
     )
 
     // return (
