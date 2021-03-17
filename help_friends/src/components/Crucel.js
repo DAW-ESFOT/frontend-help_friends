@@ -53,23 +53,26 @@
                         onExited={() => setAnimating(false)}
                         key={item.src}
                     >
-                        <img src={item.src} alt={item.altText} width='1700px' height='700px' />
+                        <img src={item.src} alt={item.altText} width='1700px' height='500px' />
                         <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
                     </CarouselItem>
                 );
             });
 
             return (
-                <Carousel
-                    activeIndex={activeIndex}
-                    next={next}
-                    previous={previous}
-                >
-                    <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
-                    {slides}
-                    <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
-                    <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
-                </Carousel>
+                <div>
+                    <Carousel
+                        activeIndex={activeIndex}
+                        next={next}
+                        previous={previous}
+                    >
+                        <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
+                        {slides}
+                        <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
+                        <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
+                    </Carousel>
+                </div>
+
             );
         }
 

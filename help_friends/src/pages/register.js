@@ -10,7 +10,8 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import {yupResolver} from "@hookform/resolvers/yup";
 
 const schema = yup.object().shape({
-    image: yup.string().required('Debe ingresar una imagen'),
+
+    userName: yup.string().required('Necesita un nombre de usuario'),
     name: yup.string().required('Ingrese su nombre'),
     lastname: yup.string().required('Ingrese su Apellido'),
     phone: yup.string().required('Ingrese su Teléfono'),
@@ -94,9 +95,10 @@ const Register = () => {
                             <Grid container spacing={1} alignItems="center">
                                 <Grid xs={12} item>
                                     <TextField
-                                        id='image'
-                                        name='image'
-                                        type='file'
+                                        id='userName'
+                                        name='userName'
+                                        type='name'
+                                        label='Nombre de usuario'
                                         ref={register}/>
                                 </Grid>
                                 <Grid xs={6} item>

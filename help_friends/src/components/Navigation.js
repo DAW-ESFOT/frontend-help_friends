@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
+import {Menu, Link as MuiLink} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -15,9 +15,8 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import {useAuth} from "@/lib/auth";
-import Button from '@material-ui/core/Button';
-import categories from '../pages/categories';
-
+import Link from "next/link";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -127,10 +126,19 @@ export default function PrimarySearchAppBar() {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleLogout}>Salir</MenuItem>
-
-
+            {/*{*/}
+            {/*    user === null ? (*/}
+            {/*            'verificando'*/}
+            {/*        )*/}
+            {/*        : user === false ? (*/}
+            {/*            <Link href='/login'>*/}
+            {/*                <MenuItem>Iniciar Sesion</MenuItem>*/}
+            {/*            </Link>*/}
+            {/*        )*/}
+            {/*        : (*/}
+            {/*            <MenuItem onClick={handleLogout}>Salir</MenuItem>*/}
+            {/*        )*/}
+            {/*}*/}
         </Menu>
     );
 
@@ -145,22 +153,6 @@ export default function PrimarySearchAppBar() {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-            <MenuItem>
-                <IconButton aria-label="show 4 new mails" color="inherit">
-                    <Badge badgeContent={4} color="secondary">
-                        <MailIcon/>
-                    </Badge>
-                </IconButton>
-                <p>Messages</p>
-            </MenuItem>
-            <MenuItem>
-                <IconButton aria-label="show 11 new notifications" color="inherit">
-                    <Badge badgeContent={11} color="secondary">
-                        <NotificationsIcon/>
-                    </Badge>
-                </IconButton>
-                <p>Notifications</p>
-            </MenuItem>
             <MenuItem onClick={handleProfileMenuOpen}>
                 <IconButton
                     aria-label="account of current user"
@@ -170,26 +162,42 @@ export default function PrimarySearchAppBar() {
                 >
                     <AccountCircle/>
                 </IconButton>
-                <p>Profile</p>
+                {
+                    user === null ? (
+                            'verificando'
+                        )
+                        : user === false ? (
+                            <Link href='/login'>
+                                <MenuItem>Iniciar Sesion</MenuItem>
+                            </Link>
+                        )
+                        : (
+                            <MenuItem onClick={handleLogout}>Salir</MenuItem>
+                        )
+                }
             </MenuItem>
         </Menu>
     );
 
     return (
         <div className={classes.grow}>
-            <AppBar position="static">
-                <Toolbar>
-                    <IconButton
-                        edge="start"
-                        className={classes.menuButton}
-                        color="inherit"
-                        aria-label="open drawer"
-                    >
-                        <MenuIcon/>
-                    </IconButton>
-                    <Typography className={classes.title} variant="h6" noWrap>
-                        HELP FRIENDS
-                    </Typography>
+            <AppBar position="static" style={{marginBottom: 40}}>
+                <Toolbar >
+                    <Link href='/' passHref>
+                            <Button>
+                                <h3 style={{color: 'white'}}>Help friend´s</h3>
+                            </Button>
+                    </Link>
+                    <Link href='/categories' passHref>
+                        <Button>
+                            <h5 style={{color: 'white'}}>Artículos</h5>
+                        </Button>
+                    </Link>
+                    <Link href='/posts' passHref>
+                        <Button>
+                            <h5 style={{color: 'white'}}>Publicar</h5>
+                        </Button>
+                    </Link>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <SearchIcon/>
@@ -204,28 +212,25 @@ export default function PrimarySearchAppBar() {
                         />
                     </div>
                     <div className={classes.grow}/>
-                    <div className={classes.sectionDesktop}>
-                        <IconButton aria-label="show 4 new mails" color="inherit">
-                            <Badge badgeContent={4} color="secondary">
-                                <MailIcon/>
-                            </Badge>
-                        </IconButton>
-                        <IconButton aria-label="show 17 new notifications" color="inherit">
-                            <Badge badgeContent={17} color="secondary">
-                                <NotificationsIcon/>
-                            </Badge>
-                        </IconButton>
-                        <IconButton
-                            edge="end"
-                            aria-label="account of current user"
-                            aria-controls={menuId}
-                            aria-haspopup="true"
-                            onClick={handleProfileMenuOpen}
-                            color="inherit"
-                        >
-                            <AccountCircle/>
-                        </IconButton>
+                    <div>
+                        {
+                            user === false ? (
+                                <Link href='/login' passHref>
+                                    <Button style={{color: 'white'}}>
+                                        <Typography className={classes.title} variant="h6">Iniciar Sesion</Typography>
+                                    </Button>
+                                </Link>
+
+                            ) : (
+                                <Link href='/login' passHref>
+                                    <Button style={{color: 'white'}} onClick={handleLogout}>
+                                        <Typography className={classes.title} variant="h6">Salir</Typography>
+                                    </Button>
+                                </Link>
+                            )
+                        }
                     </div>
+
                     <div className={classes.sectionMobile}>
                         <IconButton
                             aria-label="show more"
@@ -244,62 +249,3 @@ export default function PrimarySearchAppBar() {
         </div>
     );
 }
-
-
-// import {FormControlLabel} from "@material-ui/core";
-// import Link from 'next/link'
-// import React from 'react';
-// import {useAuth} from "../lib/auth";
-// import {Button} from "@material-ui/core";
-//
-// const Navigation = () => {
-//     const {user, logout} = useAuth()
-//     console.log('user', user)
-//
-//     const handleLogout = async () => {
-//         try {
-//             await logout();
-//         } catch (error) {
-//             console.log('error', error)
-//         }
-//     }
-//
-//
-//     return (
-//         <div>
-//             {
-//                 user === null ? (
-//                     'verificando'
-//
-//                     )
-//                     : user === false ? (
-//                         <>
-//                             <Button>
-//                                 <Link href='/login'>Inicio Sesion</Link>
-//                             </Button>
-//                         </>
-//
-//                     )
-//                     : (
-//                         <>
-//                             <h1>Hola {user.name}!</h1>
-//                             <Button onClick={handleLogout}>Salir</Button>
-//                         </>
-//                     )
-//             }
-//             <ul>
-//                 <li>
-//                     <Link href='/categories'>Artículos</Link>
-//                 </li>
-//                 <li>
-//                     <Link href='/about'>About</Link>
-//                 </li>
-//                 {/*<li>*/}
-//                 {/*    <Link href='/register'>Registro</Link>*/}
-//                 {/*</li>*/}
-//             </ul>
-//         </div>
-//     );
-// };
-//
-// export default Navigation;
